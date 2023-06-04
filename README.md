@@ -4,7 +4,7 @@
 [] - Add tests
 [] - Update readme
 
-## Description
+## Background
 
 Facets are subset of filtering and help users to quickly refine their options
 without losing their way or ending up scrolling on irrelevant products.
@@ -25,7 +25,7 @@ Feel free to import the file as it in your solution or wrap it with a promise.
 
 ---
 
-### What you should do
+### Task
 
 1 - Build an ui tree of checkboxes to represent the tree of categories given by `response.json`
 
