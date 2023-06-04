@@ -1,5 +1,4 @@
 import CheckboxView from '~/app/components/checkboxView';
-// import response from '~/response.json';
 import { CheckboxProvider } from '~/app/lib/checkboxContext';
 import fsPromises from 'fs/promises';
 import path from 'path';
