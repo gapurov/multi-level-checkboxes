@@ -1,8 +1,8 @@
 ## TODO
 
-[x] - Add a screenshot of your final outcome
-[] - Add tests
-[] - Update readme
+- [x] Add a screenshot of your final outcome
+- [] Add tests
+- [] Update readme
 
 ## Background
 
