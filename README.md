@@ -1,6 +1,6 @@
 ## TODO
 
-- [x] Add a screenshot of your final outcome
+- [x] Add a screenshot of the result
 - [ ] Add tests
 - [ ] Update readme
 
