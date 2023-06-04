@@ -101,7 +101,7 @@ const Child: React.FC<ChildProps> = ({
       </div>
       {children && opened.has(id) && (
         <ul className="ml-5">
-          {children.map((child: any) => (
+          {children.map((child: Child) => (
             <Child
               key={child.id}
               child={child}
