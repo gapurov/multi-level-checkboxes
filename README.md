@@ -1,7 +1,7 @@
 ## TODO
 
 - [x] Add a screenshot of the result
-- [ ] Add tests
+- [x] Add tests
 - [ ] Update readme
 
 ## Background

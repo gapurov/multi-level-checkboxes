@@ -14,7 +14,40 @@ export default async function Home() {
   return (
     <main className="p-8">
       <CheckboxProvider>
-        <CheckboxView categories={response.data.categories} />
+        <CheckboxView
+          categories={[
+            {
+              id: '14096',
+              count: 137,
+              parent: '14100',
+              name: 'Kleding',
+            },
+            {
+              id: '14098',
+              count: 2,
+              parent: '14096',
+              name: 'Badmode',
+            },
+            {
+              id: '14100',
+              count: 136,
+              parent: '0',
+              name: 'Dames',
+            },
+            {
+              id: '14101',
+              count: 17,
+              parent: '14096',
+              name: 'Broeken',
+            },
+            {
+              id: '14104',
+              count: 5,
+              parent: '14096',
+              name: 'Jassen en Mantels',
+            },
+          ]}
+        />
       </CheckboxProvider>
     </main>
   );

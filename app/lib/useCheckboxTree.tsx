@@ -4,7 +4,7 @@ import { useContext, useMemo } from 'react';
 import { CheckboxContext } from '~/app/lib/checkboxContext';
 import type { Category, Child } from '~/app/components/checkboxTree';
 
-const constructTree = (categories: Category[]) =>
+export const constructTree = (categories: Category[]) =>
   categories
     .filter((c) => c.parent === '0')
     .map(function addChild(child): Child {
