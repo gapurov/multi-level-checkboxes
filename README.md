@@ -1,8 +1,12 @@
-## TODO
+# Multi Level Checkbox Facet Exercise
 
-- [x] Add a screenshot of the result
-- [x] Add tests
-- [ ] Update readme
+In this excercise, a dynamic and interactive checkbox tree facet component was built. The main aim of the task was to enhance the user experience by providing quick filtering options to refine product listings without causing unnecessary scrolling or confusion.
+
+The task was accomplished using the latest Next.js version for building the overall application structure and providing both server-side rendering capabilities.
+
+React Context was used for data sharing between different components. To keep the codebase maintainable, most of the business logic was encapsulated within a separate custom hook.
+
+The published application can be found [multi-level-checkboxes.vercel.app](https://multi-level-checkboxes.vercel.app/).
 
 ## Background
 
