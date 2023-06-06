@@ -6,6 +6,7 @@ import CheckboxTree from './checkboxTree';
 import { constructTree } from '~/app/lib/useCheckboxTree';
 import { CheckboxProvider } from '../lib/checkboxContext';
 import { ReactNode } from 'react';
+
 const categories = constructTree([
   {
     id: '14096',
@@ -39,11 +40,12 @@ const categories = constructTree([
   },
 ]);
 
+const wrapper = ({ children }: { children: ReactNode }) => (
+  <CheckboxProvider>{children}</CheckboxProvider>
+);
+
 describe('CheckboxTree', () => {
   test('renders the CheckboxTree component', async () => {
-    const wrapper = ({ children }: { children: ReactNode }) => (
-      <CheckboxProvider>{children}</CheckboxProvider>
-    );
     render(<CheckboxTree categories={categories} />, { wrapper });
 
     const topCategoryButton = screen.getByText('Dames');
@@ -57,9 +59,6 @@ describe('CheckboxTree', () => {
   });
 
   test('only the categories with subcatogries hav select/deselect all button', async () => {
-    const wrapper = ({ children }: { children: ReactNode }) => (
-      <CheckboxProvider>{children}</CheckboxProvider>
-    );
     render(<CheckboxTree categories={categories} />, { wrapper });
 
     const topCategoryButton = screen.getByText('Dames');

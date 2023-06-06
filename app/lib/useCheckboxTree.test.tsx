@@ -36,6 +36,11 @@ const categories = [
     name: 'Jassen en Mantels',
   },
 ];
+
+const wrapper = ({ children }: { children: ReactNode }) => (
+  <CheckboxProvider>{children}</CheckboxProvider>
+);
+
 describe('useCheckboxTree', () => {
   test('should construct the tree from categories', () => {
     const expectedResult = [
@@ -79,7 +84,9 @@ describe('useCheckboxTree', () => {
   });
 
   test('useCheckboxTree initializes correctly', () => {
-    const { result } = renderHook(() => useCheckboxTree(categories));
+    const { result } = renderHook(() => useCheckboxTree(categories), {
+      wrapper,
+    });
     expect(result.current.tree).toEqual(constructTree(categories));
     expect(result.current.selected.size).toBe(0);
     expect(result.current.opened.size).toBe(0);
@@ -105,9 +112,6 @@ describe('useCheckboxTree', () => {
   });
 
   test('useCheckboxTree toggles opened', () => {
-    const wrapper = ({ children }: { children: ReactNode }) => (
-      <CheckboxProvider>{children}</CheckboxProvider>
-    );
     const { result } = renderHook(() => useCheckboxTree(categories), {
       wrapper,
     });
