@@ -1,7 +1,7 @@
 'use client';
 
-import { useContext, useMemo } from 'react';
-import { CheckboxContext } from '~/app/lib/checkboxContext';
+import { useMemo } from 'react';
+import { useCheckboxContext } from '~/app/lib/checkboxContext';
 import type { Category, Child } from '~/app/components/checkboxTree';
 
 export const constructTree = (categories: Category[]) =>
@@ -20,8 +20,7 @@ export const constructTree = (categories: Category[]) =>
 
 export const useCheckboxTree = (categories: Category[]) => {
   const tree = useMemo(() => constructTree(categories), [categories]);
-  const { selected, setSelected, opened, setOpened } =
-    useContext(CheckboxContext);
+  const { selected, setSelected, opened, setOpened } = useCheckboxContext();
 
   const toggleSelected = (id: string) => {
     setSelected((prevSelected) => {

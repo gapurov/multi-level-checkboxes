@@ -7,21 +7,29 @@ import {
   createContext,
   useMemo,
   useState,
+  useContext,
 } from 'react';
 
-export type CheckboxContextType = {
+type CheckboxContextType = {
   selected: Set<string>;
   setSelected: Dispatch<SetStateAction<Set<string>>>;
   opened: Set<string>;
   setOpened: Dispatch<SetStateAction<Set<string>>>;
 };
 
-export const CheckboxContext = createContext<CheckboxContextType>({
-  selected: new Set(),
-  setSelected: () => {},
-  opened: new Set(),
-  setOpened: () => {},
-});
+const CheckboxContext = createContext<CheckboxContextType | null>(null);
+
+export const useCheckboxContext = () => {
+  const context = useContext(CheckboxContext);
+
+  if (!context) {
+    throw new Error(
+      'CheckboxProvider provider is not available. Make sure to wrap your component with CheckboxProvider.'
+    );
+  }
+
+  return context;
+};
 
 export const CheckboxProvider = ({ children }: { children: ReactNode }) => {
   const [selected, setSelected] = useState<Set<string>>(new Set());
