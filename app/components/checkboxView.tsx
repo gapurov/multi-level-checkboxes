@@ -5,15 +5,15 @@ import fsPromises from 'fs/promises';
 import path from 'path';
 
 async function getCategories() {
-  const filePath = path.join(process.cwd(), `${process.env.NODE_ENV === 'production' ? '.' : 'public'}/response.json`);
+  const filePath = path.join(process.cwd(), './response.json');
 
-  const jsonData = await new Promise<Buffer>((resolve) => {
+  const jsonData = await new Promise<string>((resolve) => {
     setTimeout(() => {
-      resolve(fsPromises.readFile(filePath));
+      resolve(fsPromises.readFile(filePath, 'utf-8'));
     }, 2000);
   });
 
-  return JSON.parse(jsonData.toString());
+  return JSON.parse(jsonData);
 }
 
 const CheckboxView = async () => {
