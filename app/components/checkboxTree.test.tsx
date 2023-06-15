@@ -1,11 +1,11 @@
+import type { ReactNode } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { describe, expect } from 'vitest';
-import CheckboxTree from './checkboxTree';
+import CheckboxTree from '~/app/components/checkboxTree';
 import { constructTree } from '~/app/lib/useCheckboxTree';
-import { CheckboxProvider } from '../lib/checkboxContext';
-import { ReactNode } from 'react';
+import { CheckboxProvider } from '~/app/lib/checkboxContext';
 
 const categories = constructTree([
   {
@@ -40,9 +40,7 @@ const categories = constructTree([
   },
 ]);
 
-const wrapper = ({ children }: { children: ReactNode }) => (
-  <CheckboxProvider>{children}</CheckboxProvider>
-);
+const wrapper = ({ children }: { children: ReactNode }) => <CheckboxProvider>{children}</CheckboxProvider>;
 
 describe('CheckboxTree', () => {
   test('renders the CheckboxTree component', async () => {
@@ -74,16 +72,12 @@ describe('CheckboxTree', () => {
     await userEvent.click(subCategoryCheckbox);
     expect(subCategoryCheckbox).toBeChecked();
 
-    const topCategoryToggleSelectALlButton = screen.getByTestId(
-      'select-all-button-Dames-14100'
-    );
+    const topCategoryToggleSelectALlButton = screen.getByTestId('select-all-button-Dames-14100');
     expect(topCategoryToggleSelectALlButton).toHaveTextContent('deselect all');
     await userEvent.click(topCategoryToggleSelectALlButton);
     expect(topCategoryToggleSelectALlButton).toHaveTextContent('select all');
 
-    const subCategoryToggleSelectALlButton = screen.getByTestId(
-      'select-all-button-Kleding-14096'
-    );
+    const subCategoryToggleSelectALlButton = screen.getByTestId('select-all-button-Kleding-14096');
     expect(subCategoryToggleSelectALlButton).toHaveTextContent('deselect all');
     await userEvent.click(subCategoryToggleSelectALlButton);
     expect(subCategoryToggleSelectALlButton).toHaveTextContent('select all');

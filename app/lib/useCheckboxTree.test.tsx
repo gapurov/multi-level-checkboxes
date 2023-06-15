@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { renderHook, act } from '@testing-library/react';
 import { describe, expect } from 'vitest';
 import { constructTree, useCheckboxTree } from '~/app/lib/useCheckboxTree';
-import { CheckboxProvider } from './checkboxContext';
+import { CheckboxProvider } from '~/app/lib/checkboxContext';
 
 const categories = [
   {
@@ -37,9 +37,7 @@ const categories = [
   },
 ];
 
-const wrapper = ({ children }: { children: ReactNode }) => (
-  <CheckboxProvider>{children}</CheckboxProvider>
-);
+const wrapper = ({ children }: { children: ReactNode }) => <CheckboxProvider>{children}</CheckboxProvider>;
 
 describe('useCheckboxTree', () => {
   test('should construct the tree from categories', () => {
@@ -93,9 +91,7 @@ describe('useCheckboxTree', () => {
   });
 
   test('useCheckboxTree toggles selected', () => {
-    const wrapper = ({ children }: { children: ReactNode }) => (
-      <CheckboxProvider>{children}</CheckboxProvider>
-    );
+    const wrapper = ({ children }: { children: ReactNode }) => <CheckboxProvider>{children}</CheckboxProvider>;
     const { result } = renderHook(() => useCheckboxTree(categories), {
       wrapper,
     });

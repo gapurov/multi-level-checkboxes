@@ -1,21 +1,17 @@
+import { Suspense } from 'react';
+import Loading from '~/app/loading';
 import CheckboxView from '~/app/components/checkboxView';
 import { CheckboxProvider } from '~/app/lib/checkboxContext';
-import fsPromises from 'fs/promises';
-import path from 'path';
-
-async function getCategories() {
-  const filePath = path.join(process.cwd(), './response.json');
-  const jsonData = await fsPromises.readFile(filePath);
-  return JSON.parse(jsonData.toString());
-}
 
 export default async function Home() {
-  const response = await getCategories();
   return (
     <main className="p-8">
-      <CheckboxProvider>
-        <CheckboxView categories={response.data.categories} />
-      </CheckboxProvider>
+      <h1 className="mb-5 font-semibold text-2xl">Multi-Level Checkboxes Demo</h1>
+      <Suspense fallback={<Loading />}>
+        <CheckboxProvider>
+          <CheckboxView />
+        </CheckboxProvider>
+      </Suspense>
     </main>
   );
 }

@@ -45,9 +45,5 @@ export const CheckboxProvider = ({ children }: { children: ReactNode }) => {
     [selected, setSelected, opened, setOpened]
   );
 
-  return (
-    <CheckboxContext.Provider value={contextValue}>
-      {children}
-    </CheckboxContext.Provider>
-  );
+  return <CheckboxContext.Provider value={contextValue}>{children}</CheckboxContext.Provider>;
 };

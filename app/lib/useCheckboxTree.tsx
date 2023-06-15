@@ -52,9 +52,7 @@ export const useCheckboxTree = (categories: Category[]) => {
     const newSelected = new Set(selected);
 
     return {
-      isAllSelected: [...facetIds, parentId].every((facetId) =>
-        newSelected.has(facetId)
-      ),
+      isAllSelected: [...facetIds, parentId].every((facetId) => newSelected.has(facetId)),
       facetIds,
     };
   };

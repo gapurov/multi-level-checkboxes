@@ -1,6 +1,6 @@
 'use client';
 
-import { useCheckboxTree } from '../lib/useCheckboxTree';
+import { useCheckboxTree } from '~/app/lib/useCheckboxTree';
 
 export type Category = {
   id: string;
@@ -14,18 +14,11 @@ type CheckboxTreeProps = {
 };
 
 const CheckboxTree: React.FC<CheckboxTreeProps> = ({ categories }) => {
-  const {
-    tree,
-    opened,
-    selected,
-    getFacetsSelected,
-    toggleSelected,
-    toggleOpened,
-    toggleAllFacetsInCategory,
-  } = useCheckboxTree(categories);
+  const { tree, opened, selected, getFacetsSelected, toggleSelected, toggleOpened, toggleAllFacetsInCategory } =
+    useCheckboxTree(categories);
 
   return (
-    <ul className="pl-3">
+    <ul>
       {tree.map((child) => (
         <Child
           key={child.id}
@@ -67,12 +60,13 @@ const Child: React.FC<ChildProps> = ({
   toggleAllFacetsInCategory,
 }) => {
   const { id, name, children } = child;
+  const testIdSuffix = `${name}-${id}`;
 
   return (
     <li key={id} className="w-auto">
       <div className="pb-2 flex items-center">
         <input
-          data-testid={`checkbox-${name}-${id}`}
+          data-testid={`checkbox-${testIdSuffix}`}
           type="checkbox"
           className="mr-2 rounded"
           aria-checked={selected.has(id)}
@@ -82,7 +76,7 @@ const Child: React.FC<ChildProps> = ({
         {children ? (
           <>
             <button
-              data-testid={`button-${name}-${id}`}
+              data-testid={`button-${testIdSuffix}`}
               role="button"
               className="px-2 py-1 underline hover:decoration-blue-600/[.70] underline-offset-8"
               onClick={() => toggleOpened(id)}
@@ -91,13 +85,11 @@ const Child: React.FC<ChildProps> = ({
             </button>
             —
             <button
-              data-testid={`select-all-button-${name}-${id}`}
+              data-testid={`select-all-button-${testIdSuffix}`}
               className="ml-2 pl-1 pr-1 bg-gray-200 hover:bg-blue-600/30 rounded text-stone-600"
               onClick={() => toggleAllFacetsInCategory(id)}
             >
-              {getFacetsSelected(id).isAllSelected
-                ? 'deselect all'
-                : 'select all'}
+              {getFacetsSelected(id).isAllSelected ? 'deselect all' : 'select all'}
             </button>
           </>
         ) : (
